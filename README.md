@@ -16,7 +16,7 @@ configuration file (aka a unit file) that tells systemd what we want it to do an
 
  Add in the following text :
 
- `[Unit]
+```[Unit]
 Description=My Script Service
 After=multi-user.target
 
@@ -25,4 +25,4 @@ Type=idle
 ExecStart=/usr/bin/python /home/pi/myscript.py
 
 [Install]
-WantedBy=multi-user.target`
+WantedBy=multi-user.target```
