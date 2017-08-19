@@ -26,3 +26,38 @@ ExecStart=/usr/bin/python /home/pi/myscript.py
 
 [Install]
 WantedBy=multi-user.target```
+
+This defines a new service called “My Script Service” and we are requesting that it is launched once the multi-user environment is available. 
+The “ExecStart” parameter is used to specify the command we want to run. The “Type” is set to “idle” ensures the ExecStart command is only run 
+when everything else has loaded. For my GPIO based scripts the default type of “simple” didn’t work.
+
+Note that the paths are absolute and fully define the location of Python as well as the location of our Python script.
+
+In order to store the script’s text output in a log file you can change the ExecStart line to :
+
+
+`ExecStart=/usr/bin/python /home/pi/myscript.py > /home/pi/myscript.log 2>&1`
+
+The permission on the unit file needs to be set to 644 :
+
+`sudo chmod 644 /lib/systemd/system/myscript.service`
+
+#Step 3 - Configure systemd
+
+Now the unit file has been defined we can tell systemd to start it during the boot sequence :
+
+```sudo systemctl daemon-reload
+   sudo systemctl enable myscript.service```
+
+
+
+Reboot the Pi and your custom service should run :
+
+`sudo reboot`
+
+
+#Step 4 - Check status of your service
+
+You can check the status of your service using :
+
+`sudo systemctl status myscript.service`
