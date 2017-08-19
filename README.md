@@ -44,7 +44,7 @@ The permission on the unit file needs to be set to 644 :
 
 `sudo chmod 644 /lib/systemd/system/myscript.service`
 
-#Step 3 - Configure systemd
+# Step 3 - Configure systemd
 
 Now the unit file has been defined we can tell systemd to start it during the boot sequence :
 
@@ -58,7 +58,7 @@ Reboot the Pi and your custom service should run :
 `sudo reboot`
 
 
-#Step 4 - Check status of your service
+# Step 4 - Check status of your service
 
 You can check the status of your service using :
 
