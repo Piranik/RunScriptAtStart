@@ -26,7 +26,8 @@ ExecStart=/usr/bin/python /home/pi/myscript.py
 
 [Install]
 WantedBy=multi-user.target
-    
+
+```    
 This defines a new service called “My Script Service” and we are requesting that it is launched once the multi-user environment is 
 available. 
 The “ExecStart” parameter is used to specify the command we want to run. The “Type” is set to “idle” ensures the ExecStart command is only run 
